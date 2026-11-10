@@ -173,8 +173,8 @@ while game:
                 break
 
 
-    for enemie in enemies:
-        pygame.draw.rect(window, (255, 0, 0), enemie.rect)
+    #for enemie in enemies:
+        #pygame.draw.rect(window, (255, 0, 0), enemie.rect)
 
     pygame.display.update()
 
