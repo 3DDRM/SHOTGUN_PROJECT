@@ -18,18 +18,35 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.y = y
 
     def update(self):
-        x_old = self.rect.x
         self.timer += 1
 
         if self.step == 1:
             if self.timer >= self.tick:
-                self.rect.x-= self.speed
+                self.rect.x -= self.speed
                 self.timer = 0
                 self.step = 2
                 
         if self.step == 2:
             if self.timer >= self.tick:
-                self.rect.x+= self.speed
+                self.rect.x += self.speed
+                self.timer = 0
+                self.step = 3
+
+        if self.step == 3:
+            if self.timer >= self.tick:
+                self.rect.x += self.speed + 100
+                self.timer = 0
+                self.step = 4
+
+        if self.step == 4:
+            if self.timer >= self.tick:
+                self.rect.x -= self.speed
+                self.timer = 0
+                self.step = 5
+
+        if self.step == 5:
+            if self.timer >= self.tick:
+                self.rect.x -= self.speed
                 self.timer = 0
                 self.step = 1
 

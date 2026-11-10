@@ -44,5 +44,10 @@ class Enemy(pygame.sprite.Sprite):
                 self.timer = 0
                 self.step = 1
 
+    def take_damage(self, amount):
+        self.health -= amount
+        if self.heatlth <= 0:
+            self.kill()
+
     def draw(self, surface):
         surface.blit(self.image, self.rect)

@@ -19,7 +19,6 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.y = y
 
     def update(self):
-        x_old = self.rect.x
         self.timer += 1
 
         if self.step == 1:
