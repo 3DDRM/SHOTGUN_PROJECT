@@ -1,12 +1,13 @@
 import pygame
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, x, y, image, width, height):
+    def __init__(self, x, y, image, width, height, health):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
         self.width = width
         self.height = height
+        self.health = health
         self.image = pygame.transform.scale(self.image, (width, height))
         self.rect.center = (x, y)
 
