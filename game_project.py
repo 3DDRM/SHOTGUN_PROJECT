@@ -10,7 +10,7 @@ import bos
 pygame.init()
 pygame.mixer.init()
 window = pygame.display.set_mode((constants.DISPLAY_WIDTH, constants.DISPLAY_HEIGHT))
-pygame.display.set_caption('CHIMO ADVENTURE SUPREME')
+pygame.display.set_caption('SHOTGUN_ADVENTURE_SUPREME')
 window.fill((0,0,0))
 
 music = pygame.mixer.music.load('assets//songs//practice_mode.mp3')
@@ -28,9 +28,6 @@ background = pygame.transform.scale(background, (constants.STAGE_WIDTH, constant
 bc_variant = pygame.transform.scale(bc_variant, (constants.STAGE_WIDTH, constants.STAGE_HEIGHT))
 
 player = character.Character(x, y, player_image,  100, 80, 100)
-
-#player_width = player.shape.width
-#player_height = player.shape.height
 
 walls =[
     objects.Wall(40, 440, 210, 90),
@@ -53,7 +50,7 @@ boss = pygame.image.load('assets//images//weapons//torchic.webp').convert_alpha(
 enemie1 = enemy.Enemy(100, 200, enemy_image, 120, 100, 100, 50)
 enemie2 = enemy.Enemy2(400, 400, enemy_image, 120, 100, 100, 50)
 enemie3 = enemy.Enemy3(480, 150, enemy_image_two, 120, 100, 100, 50)
-mayor_enemy = bos.Bos(500, 200, ammu_boss, 200, 200, 500, 80)
+mayor_enemy = bos.Bos(500, 200, ammu_boss, 200, 200, 700, 80)
 
 enemies = [enemie1, enemie2, enemie3]
 
@@ -64,13 +61,15 @@ text_image = text.render(f'Score:', True, (10, 25, 47))
 small_font = pygame.font.Font(None, 30)
 
 rules_text_1 = small_font.render("WASD: Moverse", True, (0, 0, 0))
-rules_text_2 = small_font.render("J / K: Disparar (3 por turno)", True, (0, 0, 0))
+rules_text_2 = small_font.render("J = disparo izquierda | K = derecha", True, (0, 0, 0))
 rules_text_3 = small_font.render("Objetivo: Derrotar enemigos", True, (0, 0, 0))
 
 rules_text_4 = small_font.render("WASD: Moverse", True, (255, 255, 255))
-rules_text_5 = small_font.render("J / K: Disparar (3 por turno)", True, (255, 255, 255))
+rules_text_5 = small_font.render("J = disparo izquierda | K = derecha", True, (255, 255, 255))
 rules_text_6 = small_font.render("Objetivo: Derrotar enemigos", True, (255, 255, 255))
 rules_text_7 = small_font.render('¡¡¡¡Derrotalo y recupera la luz!!!!', True, (255, 0, 0))
+rules_text_8 = small_font.render("Alterna cada 3 disparos (empieza con J)", True, (0, 0, 0))
+rules_text_9 = small_font.render("Alterna cada 3 disparos (empieza con J)", True, (255, 255, 255))
 
 player_life = pygame.font.Font(None, 60).render('Vida:', True, (0, 255, 0))
 
@@ -174,6 +173,7 @@ while game:
     window.blit(rules_text_1, (50, 480))
     window.blit(rules_text_2, (10, 510))
     window.blit(rules_text_3, (10, 540))
+    window.blit(rules_text_8, (10, 570))
 
     if change_stage == True:
         window.blit(bc_variant, (0,0)) 
@@ -184,6 +184,7 @@ while game:
         window.blit(rules_text_5, (10, 510))
         window.blit(rules_text_6, (10, 540))
         window.blit(rules_text_7, (400, 500))
+        window.blit(rules_text_9, (10, 570))
     
     for i in enemies:
         i.update()
